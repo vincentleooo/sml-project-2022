@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/stylesheet.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.11.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.4.4/d3.min.js" integrity="sha512-hnFpvCiJ8Fr1lYLqcw6wLgFUOEZ89kWCkO+cEekwcWPIPKyknKV1eZmSSG3UxXfsSuf+z/SgmiYB1zFOg3l2UQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="https://livejs.com/live.js"></script>
+    <title>Optimiser Course - SML Project 2022</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div>
+        <p id="titlebar">🤖 <b>Life as a gradient descent</b></p>
+        <div id="navbar">
+          <nav class="crumbs">
+            <ul>
+              <li class="crumb">
+                <a href="./">Home</a>
+              </li>
+              <li class="crumb">
+                <a href="https://github.com/vincentleooo/">Repository</a>
+              </li>
+              <li class="crumb">
+                <a href="https://github.vinleonardo.com">Other&nbsp;Projects</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- <div id="myDiv" style="height: 800px;""></div>
+        <button onclick="draw3DSurface('1');">do</button>
+        <button onclick="optimiseSurface('1', 100, 'adam');">adam</button>
+        <button onclick="optimiseSurface('1', 100, 'sgd');">sgd</button>
+        <button onclick="optimiseSurface('1', 100, 'momentum');">momentum</button>
+        <p id="progress1"></p>
+        <p id="progress2"></p> -->
+      </div>
+
+      <div id="beginGame">
+        <!-- Using the center element as an homage to Google -->
+        <center>
+          <h1>Hello. Welcome to your quasi-life.</h1>
+          <p class="story">
+            When you are born, you have eight different talents. To achieve your purpose in life, you have to traverse through life choosing the best talents to work on. Each step of the way, you will be able to choose which talent to work on based on the numbers shown. The higher the number, the higher your results-to-effort ratio.
+          </p>
+          <button id="startGameButton" onclick="startGame('1');">Start Game</button>
+        </center>
+      </div>
+
+      <div id="game">
+        <!-- Using the center element as an homage to Google -->
+        <center>
+          <h1 id="step"></h1>
+          <p class="story">
+            Here are your choices.
+          </p>
+          <p class="story" id="gradients"></p>
+
+          <div class="choices">
+            <div>
+              <p><b>Listening</b></p>
+              <p id="choice1"></p>
+              <button onclick="selectChoice('1');">Select</button>
+            </div>
+            <div>
+              <p><b>Negotiation</b></p>
+              <p id="choice2"></p>
+              <button onclick="selectChoice('2');">Select</button>
+            </div>
+            <div>
+              <p><b>Presentation</b></p>
+              <p id="choice3"></p>
+              <button onclick="selectChoice('3');">Select</button>
+            </div>
+            <div>
+              <p><b>Critical thinking</b></p>
+              <p id="choice4"></p>
+              <button onclick="selectChoice('4');">Select</button>
+            </div>
+            <div>
+              <p><b>Creativity</b></p>
+              <p id="choice5"></p>
+              <button onclick="selectChoice('5');">Select</button>
+            </div>
+            <div>
+              <p><b>Decision making</b></p>
+              <p id="choice6"></p>
+              <button onclick="selectChoice('6');">Select</button>
+            </div>
+            <div>
+              <p><b>Management</b></p>
+              <p id="choice7"></p>
+              <button onclick="selectChoice('7');">Select</button>
+            </div>
+            <div>
+              <p><b>Patience</b></p>
+              <p id="choice8"></p>
+              <button onclick="selectChoice('8');">Select</button>
+            </div>
+          </div>
+          <button id="endGameButton" onclick="draw3DSurface('1');">End Game</button>&nbsp;
+          <button id="resetButton" onclick="reset();">Reset</button>
+        </center>
+      </div>
+
+      <div id="loading">
+        <center>
+          <p id="progress1"></p>
+        </center>
+      </div>
+
+      <div id="graphs">
+        <div id="myDiv" style="height: 70vh;""></div>
+        <center>
+          <h3>Compare with other optimisers.</h3>
+          <button onclick="optimiseSurface('1', 100, 'Adam');">Adam</button>
+          <button onclick="optimiseSurface('1', 100, 'SGD');">SGD</button>
+          <button onclick="optimiseSurface('1', 100, 'Momentum');">Momentum</button>
+          <button onclick="optimiseSurface('1', 100, 'RMSProp');">RMSProp</button>
+          <button onclick="optimiseSurface('1', 100, 'AdaGrad');">AdaGrad</button>
+          <button onclick="window.location.href='./'">Restart</button>
+          <p id="progress2"></p>
+        </center>
+      </div>
+
+      <footer class="footer">
+        <p>
+          Copyright &copy; 2022 by Vincent Leonardo. All rights reserved.
+        </p>
+      </footer>
+    </div>
+    <!-- <div id="output_field"></div> -->
+    <!-- <button onclick="optimise();">opt</button> -->
+    <!-- <script src="src/plotting.js"></script> -->
+    <script src="src/main.js"></script>
+  </body>
+</html>
