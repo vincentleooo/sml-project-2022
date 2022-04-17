@@ -375,8 +375,8 @@ function startGame(option) {
     loss(x_var_game, y_var_game, option)
   );
   gradients.push([
-    grads[gradientsCounter].mul(-1).dataSync()[0],
-    grads[gradientsCounter + 1].mul(-1).dataSync()[0],
+    grads[gradientsCounter].dataSync()[0],
+    grads[gradientsCounter + 1].dataSync()[0],
   ]);
 
   gradientsCounter += 2;
@@ -412,32 +412,32 @@ function startGame(option) {
 function selectChoice(choice) {
   switch (choice) {
     case "1":
-      y_var_game = y_var_game.add(0.05 * gradients[gameStep][1]);
-      break;
-    case "2":
-      x_var_game = x_var_game.add(0.05 * gradients[gameStep][0] * 0.5);
-      y_var_game = y_var_game.add(0.05 * gradients[gameStep][1] * 0.5);
-      break;
-    case "3":
-      x_var_game = x_var_game.add(0.05 * gradients[gameStep][0] * 0.5);
-      break;
-    case "4":
-      x_var_game = x_var_game.add(0.05 * gradients[gameStep][0] * 0.5);
-      y_var_game = y_var_game.sub(0.05 * gradients[gameStep][1] * 0.5);
-      break;
-    case "5":
       y_var_game = y_var_game.sub(0.05 * gradients[gameStep][1]);
       break;
-    case "6":
+    case "2":
       x_var_game = x_var_game.sub(0.05 * gradients[gameStep][0] * 0.5);
       y_var_game = y_var_game.sub(0.05 * gradients[gameStep][1] * 0.5);
       break;
-    case "7":
-      x_var_game = x_var_game.sub(0.05 * gradients[gameStep][0]);
+    case "3":
+      x_var_game = x_var_game.sub(0.05 * gradients[gameStep][0] * 0.5);
       break;
-    case "8":
+    case "4":
       x_var_game = x_var_game.sub(0.05 * gradients[gameStep][0] * 0.5);
       y_var_game = y_var_game.add(0.05 * gradients[gameStep][1] * 0.5);
+      break;
+    case "5":
+      y_var_game = y_var_game.add(0.05 * gradients[gameStep][1]);
+      break;
+    case "6":
+      x_var_game = x_var_game.add(0.05 * gradients[gameStep][0] * 0.5);
+      y_var_game = y_var_game.add(0.05 * gradients[gameStep][1] * 0.5);
+      break;
+    case "7":
+      x_var_game = x_var_game.add(0.05 * gradients[gameStep][0]);
+      break;
+    case "8":
+      x_var_game = x_var_game.add(0.05 * gradients[gameStep][0] * 0.5);
+      y_var_game = y_var_game.sub(0.05 * gradients[gameStep][1] * 0.5);
       break;
   }
 
@@ -451,8 +451,8 @@ function selectChoice(choice) {
   console.log(grads);
 
   gradients.push([
-    grads[gradientsCounter].mul(-1).dataSync()[0],
-    grads[gradientsCounter + 1].mul(-1).dataSync()[0],
+    grads[gradientsCounter].dataSync()[0],
+    grads[gradientsCounter + 1].dataSync()[0],
   ]);
 
   gameStep += 1;

@@ -121,13 +121,19 @@ nav {
   row-gap: 2rem;
 }
 
+@media (max-width: 600px) {
+  .choices {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 #titlebar {
   font-size: small;
   margin-bottom: 0%;
 }
 
 footer {
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 #graphs {
@@ -142,6 +148,7 @@ footer {
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
+  font-size: x-small;
 }
 
 #resetButton {
