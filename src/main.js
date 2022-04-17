@@ -181,6 +181,11 @@ async function draw3DSurface(option) {
         "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif",
       color: "#000",
     },
+    showlegend: true,
+    legend: {
+      x: 0,
+      y: 1
+    }
   };
 
   const hideDiv1 = document.getElementById("loading");
