@@ -90,7 +90,16 @@ nav {
   max-width: 650px;
 }
 
-.startGameButton {
+#startGameButton {
+  font-size: large;
+  padding: 0.5rem 1rem;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  border: 0;
+  margin-top: 1rem;
+}
+#startGameButton2 {
   font-size: large;
   padding: 0.5rem 1rem;
   background-color: black;
