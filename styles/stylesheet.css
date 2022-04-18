@@ -98,6 +98,8 @@ nav {
   border-radius: 10px;
   border: 0;
   margin-top: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 #startGameButton2 {
   font-size: large;
@@ -107,6 +109,8 @@ nav {
   border-radius: 10px;
   border: 0;
   margin-top: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 #endGameButton {
@@ -117,6 +121,8 @@ nav {
   border-radius: 10px;
   border: 0;
   margin-top: 3rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 
@@ -168,6 +174,8 @@ footer {
   border-radius: 10px;
   border: 0;
   margin-top: 3rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 button {
