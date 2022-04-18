@@ -508,5 +508,6 @@ function reset() {
   x_game_list = [];
   y_game_list = [];
   z_game_list = [];
+  console.log(optionChosen)
   startGame(optionChosen);
 }
