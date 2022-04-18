@@ -90,7 +90,7 @@ nav {
   max-width: 650px;
 }
 
-#startGameButton {
+.startGameButton {
   font-size: large;
   padding: 0.5rem 1rem;
   background-color: black;

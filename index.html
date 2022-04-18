@@ -47,7 +47,8 @@
           <p class="story">
             When you are born, you have eight different talents. To achieve your purpose in life, you have to traverse through life choosing the best talents to work on for. Each step of the way, you will be able to choose which talent to work on based on the numbers shown. The higher the number, the higher your results-to-effort ratio. Once the numbers reach zero, it <emph>should</emph> be a place where you are really talented and will not learn anything, thus reaching your purpose, right? What happens if you go further?
           </p>
-          <button id="startGameButton" onclick="startGame('1');">Start Game</button>
+          <button class="startGameButton" onclick="startGame('1');">Start Game (Option 1)</button>&nbsp;&nbsp;&nbsp;
+          <button class="startGameButton" onclick="startGame('2');">Start Game (Option 2)</button>
         </center>
       </div>
 
@@ -102,7 +103,7 @@
               <button onclick="selectChoice('8');">Select</button>
             </div>
           </div>
-          <button id="endGameButton" onclick="draw3DSurface('1');">End Game</button>&nbsp;
+          <button id="endGameButton" onclick="draw3DSurface();">End Game</button>&nbsp;&nbsp;&nbsp;
           <button id="resetButton" onclick="reset();">Reset</button>
         </center>
       </div>
@@ -118,11 +119,11 @@
         <div id="myDiv" style="height: 70vh;""></div>
         <center>
           <h3>Compare with other optimisers.</h3>
-          <button onclick="optimiseSurface('1', 100, 'Adam');">Adam</button>
-          <button onclick="optimiseSurface('1', 100, 'SGD');">SGD</button>
-          <button onclick="optimiseSurface('1', 100, 'Momentum');">Momentum</button>
-          <button onclick="optimiseSurface('1', 100, 'RMSProp');">RMSProp</button>
-          <button onclick="optimiseSurface('1', 100, 'AdaGrad');">AdaGrad</button>
+          <button onclick="optimiseSurface(100, 'Adam');">Adam</button>
+          <button onclick="optimiseSurface(100, 'SGD');">SGD</button>
+          <button onclick="optimiseSurface(100, 'Momentum');">Momentum</button>
+          <button onclick="optimiseSurface(100, 'RMSProp');">RMSProp</button>
+          <button onclick="optimiseSurface(100, 'AdaGrad');">AdaGrad</button>
           <button onclick="window.location.href='./'">Restart</button>
           <p id="progress2"></p>
         </center>

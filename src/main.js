@@ -60,14 +60,14 @@ function loss(x, y, option) {
       );
       break;
     case "2":
-      z = __f2(
+      z = tf.sub(0, __f2(
         x,
         y,
         (x_mean = 1.0),
         (y_mean = -0.5),
         (x_sig = 0.2),
         (y_sig = 0.2)
-      );
+      ));
       z = z.sub(
         __f2(
           x,
@@ -93,16 +93,16 @@ function loss(x, y, option) {
   return z;
 }
 
-async function optimise(opt, x_var, y_var, option, count) {
+async function optimise(opt, x_var, y_var, count) {
   let x_plotly = [];
   let y_plotly = [];
   let z_plotly = [];
 
   for (let i = 0; i < count; i++) {
-    opt.minimize(() => loss(x_var, y_var, option));
+    opt.minimize(() => loss(x_var, y_var, optionChosen));
     x_plotly.push(x_var.dataSync()[0]);
     y_plotly.push(y_var.dataSync()[0]);
-    z_plotly.push(loss(x_var, y_var, option).dataSync()[0]);
+    z_plotly.push(loss(x_var, y_var, optionChosen).dataSync()[0]);
     await delay(10);
     document.getElementById("progress2").textContent =
       "Loading " + (i + 1) + "/" + count + ".";
@@ -121,7 +121,7 @@ function range(start, stop, step) {
   return arr;
 }
 
-async function draw3DSurface(option) {
+async function draw3DSurface() {
   const hideDiv = document.getElementById("game");
   const showDiv = document.getElementById("loading");
   hideDiv.style.display = "none";
@@ -137,7 +137,7 @@ async function draw3DSurface(option) {
     let y = y_vals[i];
     for (let j = 0; j < x_vals.length; j++) {
       let x = x_vals[j];
-      let z = loss(x, y, option);
+      let z = loss(x, y, optionChosen);
       coordX.push(z);
     }
     coord.push(coordX);
@@ -231,8 +231,11 @@ async function draw3DSurface(option) {
       [countTraces]
     );
     await delay(10);
-    console.log("yeay");
+    document.getElementById("progress2").textContent =
+      "Plotting " + (i + 1) + "/" + x_game_list.length + ".";
   }
+  document.getElementById("progress2").textContent =
+      "";
 }
 
 function delay(milliseconds) {
@@ -241,10 +244,10 @@ function delay(milliseconds) {
   });
 }
 
-async function optimiseSurface(option, count, optimiser) {
+async function optimiseSurface(count, optimiser) {
   let x_plotly = [0.75];
   let y_plotly = [1];
-  let z_plotly = [loss(0.75, 1, option).dataSync()[0]];
+  let z_plotly = [loss(0.75, 1, optionChosen).dataSync()[0]];
   let opt;
   let color;
 
@@ -328,7 +331,7 @@ async function optimiseSurface(option, count, optimiser) {
   let x_var = tf.variable(x_i, (trainable = true));
   let y_var = tf.variable(y_i, (trainable = true));
 
-  let returnedArray = await optimise(opt, x_var, y_var, "1", count);
+  let returnedArray = await optimise(opt, x_var, y_var, count);
 
   document.getElementById("progress2").textContent =
       "";
@@ -374,10 +377,10 @@ function startGame(option) {
 
   x_game_list.push(0.75);
   y_game_list.push(1);
-  z_game_list.push(loss(0.75, 1, option).dataSync()[0]);
+  z_game_list.push(loss(0.75, 1, optionChosen).dataSync()[0]);
 
   let { val, grads } = tf.variableGrads(() =>
-    loss(x_var_game, y_var_game, option)
+    loss(x_var_game, y_var_game, optionChosen)
   );
   gradients.push([
     grads[gradientsCounter].dataSync()[0],
@@ -505,5 +508,5 @@ function reset() {
   x_game_list = [];
   y_game_list = [];
   z_game_list = [];
-  startGame("1");
+  startGame(optionChosen);
 }
